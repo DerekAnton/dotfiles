@@ -1,7 +1,13 @@
 #!/bin/bash
-
+#
+# # # # # # # # 
+# Wifi Fetch  #
+# # # # # # # #  
+# 
 # Finds the wireless network with the highest signal and returns it's SSID
+#
 
+# Dumps a list of avaliable wifi network names (SSIDs) and their signal quality to a file.
 nmcli -f ssid,signal device wifi list | tr -s " " > ~/wifilist.dump
 
 highestSignal=0
