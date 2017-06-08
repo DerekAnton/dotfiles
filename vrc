@@ -1,0 +1,50 @@
+syntax enable
+  2 
+  3 set number                      " Numbered rows
+  4 set smartindent                 " Indent new lines to match old ones, or occasionally add an extra level
+  5 set nowrap                      " Do not wrap lines by default
+  6 set linebreak                   " If lines are wrapped, don't wrap mid-word
+  7 set wildmenu                    " Show menu options when tab-completing in vim
+  8 set tags=/home/danton/.vimtags  " Tags file
+  9 set incsearch                   " Incremental search
+ 10 set tabpagemax=40               " Open many tabs, for :tabdo commands
+ 11 
+ 12 " enables the mouse see :help mouse-using
+ 13 set mouse=nvi
+ 14 
+ 15 " Case insensitive search, unless a character in the search phrase is capital
+ 16 set ignorecase
+ 17 set smartcase
+ 18 
+ 19 " Change tabs to spaces
+ 20 set tabstop=4
+ 21 set shiftwidth=4
+ 22 set expandtab
+ 23 
+ 24  " Enter turns off search highlighting
+ 25 nnoremap <silent> <CR> :noh<CR><CR>
+ 26 
+ 27 " K is just J in the opposite direction, instead of opening a bash thing
+ 28 nnoremap K kJ
+ 29 
+ 30 " Enter searches for \t
+ 31 "nnoremap <silent> <CR> :silent! /\t<CR><CR>
+ 32 
+ 33 
+ 34 " Change tabs on Alt-Left or Alt-Right
+ 35 nnoremap <A-Left> :tabprevious<CR>
+ 36 nnoremap <A-Right> :tabnext<CR>
+ 37 
+ 38 " F8 to toggle between tabs and :n
+ 39 let notabs = 1
+ 40 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+ 41 
+ 42 " Colorscheme
+  43 " colorscheme desert
+ 44 
+ 45 " Recolor the background color when using C^n autocompletion
+ 46 " highlight Pmenu ctermbg=238
+ 47 
+ 48 " Remove trailing whitespace on save
+ 49 autocmd BufWritePre * :%s/\s\+$//e
+
