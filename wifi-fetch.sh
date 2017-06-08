@@ -23,6 +23,12 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	fi
 done < ~/wifilist.dump 
 
+# Need to handle for spaces in the SSID, as well as other special characters
+# Pseudo: Loop through each character of highestSSID and += them into another variable. 
+#         If the character being read is a special character, i.e. space, #, $, etc. then append a '\' before += into the new variable.
+# maybe use SED?
+removedSpecialChars="NULL"
+
 echo determined $highestSSID has a signal strength of $highestSignal%
 echo attempting to connect...
 
