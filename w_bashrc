@@ -1,0 +1,40 @@
+
+export devhome=$HOME/git/RTSTF
+alias dh="cd $devhome && pwd"
+
+# Git
+alias gits="git status --short"
+
+# Vim 
+alias vim="vim -p"
+alias vimrc="vi ~/.vimrc"
+
+# Vim Dev
+function flist  { find ~/git/RTSTF -iname '*.cpp' -o -iname '*.cc' -o -iname '*.c' -o -iname '*.hpp' -o -iname '*.hh' -o -iname '*.h' ; }
+function mlist  { find ~/git/RTSTF -iname 'makefile' ; }
+function mktags { ssh -oLogLevel=error skynet 'cd ~/git/RTSTF && flist > cscope.files && ctags -L cscope.files && cscope -bqv' ; }
+alias vv='(mktags && cd ~/git/RTSTF &&  vim)'
+
+# Build Related
+alias mk="makefast"
+alias pmake="cd $devhome; git pull; mk; pwd;"
+ 
+# Bashrc
+alias reload="source ~/.bashrc"
+alias bashrc="vi ~/.bash_aliases && reload"
+
+# SSH
+alias ssh="ssh -Y"
+alias sshnk="ssh -Y -o PreferredAuthentications=password"
+
+# Navigation
+alias lrt="ls -lrt"
+alias c="clear"
+ 
+# Programs
+alias eclipse="eclipse &"
+alias grep="grep --color"
+alias go="gnome-open"
+alias psg="ps -ef | grep"
+alias term="gnome-terminal &"
+alias firefox="firefox &"
