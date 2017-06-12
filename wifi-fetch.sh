@@ -1,8 +1,5 @@
 #!/bin/bash
-#
-# # # # # # # # 
-# Wifi Fetch  #
-# # # # # # # #  
+
 # 
 # Finds the wireless network with the highest signal and returns it's SSID
 #
