@@ -38,7 +38,7 @@ alias receiverf="cd ~/git/RTSTF/Scenarios/SCS/ && ./ReceiveRF.bash"
 alias scsdisplay="cd ~/RTSTF_master/bin/ && ./SCSDisplay"
 
 # Scratch
-alias scratch="~/.userscripts/CreateUniqueScratchFile.sh"
+alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchFile.sh"
 
 # SSH
 alias ssh="ssh -Y"
