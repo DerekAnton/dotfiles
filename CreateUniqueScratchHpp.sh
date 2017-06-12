@@ -7,4 +7,5 @@ if [[ -e $name.cpp ]] ; then
     done
     name=$name-$i
 fi
+cp ~/scratch/.template "$name".cpp
 vim ~/scratch/"$name".cpp
