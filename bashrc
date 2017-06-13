@@ -6,7 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Source aliases
-if [ -f ~/.bash_alias ]; then
-	. ~/.bash_alias
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
 fi
 
