@@ -1,0 +1,14 @@
+[user]
+    name =  
+    email = 
+[difftool]
+    tool = meld
+    prompt = false
+[diff]
+    tool = meld
+    prompt = false
+[core]
+    editor = vim 
+[merge]
+    tool = meld
+    prompt = false
