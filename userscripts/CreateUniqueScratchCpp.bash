@@ -1,3 +1,5 @@
+#!/bin/bash
+
 name=scratch
 
 if [[ -e $name.cpp ]] ; then
