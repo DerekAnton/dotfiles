@@ -5,6 +5,9 @@ alias dh="cd $devhome && pwd"
 alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"
 
+# Find
+alias ff="find . -name $1"
+
 # Git
 alias gits="git status --short"
 
