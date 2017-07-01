@@ -36,7 +36,7 @@ alias term="gnome-terminal &"
 alias firefox="firefox &"
 
 # Scratch
-alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.sh"
+alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.bash"
 
 # Todo
 alias todo="vi ~/.todo"
@@ -53,3 +53,8 @@ alias vv='(mktags && cd ~/git/ &&  vim)'
 
 # Volume
 alias setvol="amixer set Master $1"
+
+# Wifi
+alias listwifi="nmcli -f ssid,signal device wifi list | tr -s \" \""
+alias wifinopass="~/.userscripts/NoPassWifiFetch.bash"
+alias wifipass="~/.userscripts/WifiFetch.bash $1"
