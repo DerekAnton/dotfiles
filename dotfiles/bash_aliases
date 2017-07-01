@@ -52,7 +52,7 @@ function mktags { 'cd ~/git/ && flist > cscope.files && ctags -L cscope.files &&
 alias vv='(mktags && cd ~/git/ &&  vim)'
 
 # Volume
-alias setvol="amixer set Master $1"
+alias vol="amixer set Master $1"
 
 # Wifi
 alias listwifi="nmcli -f ssid,signal device wifi list | tr -s \" \""
