@@ -108,7 +108,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 client.background #3f4551
 client.focused #333333 #222222 #ffffff
 
-exec --no-startup-id feh --bg-fill ~/.themes/Arc-Dark/arcbg.png
+exec --no-startup-id feh --bg-fill ~/.wallpapers/wallpaper-2.jpg
 
 assign [class="Rhythmbox"] $w0
 

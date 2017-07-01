@@ -1,6 +1,12 @@
 export devhome=$HOME/git/
 alias dh="cd $devhome && pwd"
 
+# Backlight
+# clone, make, and make install from the following repository
+# https://github.com/haikarainen/light.git
+# light -A 10 // increase backlight by 10
+# light -U 10 // decrease backlight by 10
+
 # Bashrc
 alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"
@@ -42,3 +48,6 @@ function flist  { find ~/git/RTSTF -iname '*.cpp' -o -iname '*.cc' -o -iname '*.
 function mlist  { find ~/git/RTSTF -iname 'makefile' ; }
 function mktags { 'cd ~/git/ && flist > cscope.files && ctags -L cscope.files && cscope -bqv' ; }
 alias vv='(mktags && cd ~/git/ &&  vim)'
+
+# Volume
+alias setvol="amixer set Master $1"
