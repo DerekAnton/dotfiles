@@ -7,6 +7,8 @@ alias dh="cd $devhome && pwd"
 # light -A 10 // increase backlight by 10
 # light -U 10 // decrease backlight by 10
 
+alias lightup="light -A $1"
+alias lightdown="light -U $1"
 # Bashrc
 alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"

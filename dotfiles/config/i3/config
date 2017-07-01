@@ -59,20 +59,21 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace $w0
 
-bindsym $mod+F1 exec lxappearance
-bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10
-bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
+bindsym $mod+F1 exec --no-startup-id amixer set Master 0%
+bindsym $mod+F2 exec --no-startup-id amixer set Master 5%-
+bindsym $mod+F3 exec --no-startup-id amixer set Master 5%+
+bindsym $mod+F11 exec --no-startup-id light -U 10
+bindsym $mod+F12 exec --no-startup-id light -A 10
 
 bindsym $mod+a focus parent
-bindsym $mod+c exec google-chrome-stable
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+e layout toggle split
 bindsym $mod+f exec thunar
 bindsym $mod+g exec gedit
 bindsym $mod+h split h
+bindsym $mod+m fullscreen toggle
 bindsym $mod+q kill
 bindsym $mod+r mode "resize"
-bindsym $mod+s exec subl3
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+v split v
 bindsym $mod+w layout tabbed
@@ -101,16 +102,12 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+x exec i3lock
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-
 client.background #3f4551
 client.focused #333333 #222222 #ffffff
 
 exec --no-startup-id feh --bg-fill ~/.wallpapers/wallpaper-2.jpg
 
-assign [class="Rhythmbox"] $w0
+assign [class="Spotify"] $w0
 
 for_window [class="Eog"] floating enable
 for_window [class="Lxappearance"] floating enable

@@ -19,8 +19,8 @@ for file in ~/git/Bash_Scripts/dotfiles/*; do
         cp $file ~/$filename
     elif [ $filename == ".gitconfig" ]
     then
-        echo "writting " $filename " to ~/"
-        cp $file ~/$filename
+        echo "skipping " $filename " to ~/"
+        #cp $file ~/$filename
     elif [ $filename == ".template" ]
     then
         echo "writting " $filename " to ~/scratch/"
