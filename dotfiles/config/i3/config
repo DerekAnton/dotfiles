@@ -50,7 +50,7 @@ bindsym $mod+Shift+Right move right
                                          # split horizontally / vertically / enter fullscreen
 bindsym $mod+h split h
 bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
+bindsym $mod+m fullscreen toggle
                                          # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+z layout tabbed

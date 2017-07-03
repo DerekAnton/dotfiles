@@ -16,6 +16,9 @@ echo "wrote ~/.vimrc to ~/git/Bash_Scripts/dotfiles/vimrc"
 # I3 config
 cp ~/.config/i3/config ~/git/Bash_Scripts/dotfiles/config/i3/config &&
 echo "wrote ~/.config/i3/config to ~/git/Bash_Scripts/dotfiles/config/i3/config"
+cp /etc/i3status.conf ~/git/Bash_Scripts/etc/i3status.conf &&
+echo "wrote /etc/i3status.conf to ~/git/Bash_Scripts/etc/i3status.conf"
+
 
 # Userscripts
 cp ~/.userscripts/CreateUniqueScratchCpp.bash ~/git/Bash_Scripts/userscripts/CreateUniqueScratchCpp.bash &&
