@@ -1,8 +1,8 @@
 # Bash_Scripts
 
-Some handy bash scripts i've written for fun.
+My collection of dotfiles and userscripts.
 
-PushFromRepo and PullFromLocal allow automated upkeep of your local scripts vs git tracked scripts.
+PushFromRepo and PullFromLocal allow automated upkeep of your local scripts & dotfiles vs git tracked scripts.
 
 directory assumptions:
 ~/.config/i3/
