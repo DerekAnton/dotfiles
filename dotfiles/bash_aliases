@@ -23,7 +23,7 @@ alias gits="git status --short"
 alias i3config="vi ~/.config/i3/config"
 
 # Navigation
-alias lrt="ls -lrt"
+alias ll="ls -lrt"
 alias lart="ls -lart"
 alias c="clear"
 
