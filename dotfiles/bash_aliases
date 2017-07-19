@@ -42,7 +42,6 @@ alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.bash"
 alias todo="vi ~/.todo"
 
 # Vim
-alias vim="vim -p"
 alias vimrc="vi ~/.vimrc"
 
 # Vim Dev
