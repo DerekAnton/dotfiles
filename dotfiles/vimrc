@@ -43,6 +43,9 @@ nnoremap <C-d> <C-d>L
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
+" F9 now toggles line numbers
+nnoremap <silent> <F9> :set number!<CR>
+
 " Colorscheme
 colorscheme peachpuff
 
