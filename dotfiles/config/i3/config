@@ -90,11 +90,11 @@ bar
 	{
 		background #2F333E
 		statusline #ffffff
-		separator #ffffff
-
-		focused_workspace #000000 #3F4551 #ffffff
-		inactive_workspace #333333 #222222 #888888
-		urgent_workspace #aa0000 #990000 #ffffff
+		separator  #ffffff
+                           #Outline   Bg     Text
+		focused_workspace  #3F4551 #3F4551 #ffffff
+		inactive_workspace #222222 #222222 #888888
+		urgent_workspace   #aa0000 #990000 #ffffff
 	}
 
 }

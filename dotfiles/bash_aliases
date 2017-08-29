@@ -1,14 +1,6 @@
 export devhome=$HOME/git/
 alias dh="cd $devhome && pwd"
 
-# Backlight
-# clone, make, and make install from the following repository
-# https://github.com/haikarainen/light.git
-# light -A 10 // increase backlight by 10
-# light -U 10 // decrease backlight by 10
-
-alias lightup="light -A $1"
-alias lightdown="light -U $1"
 # Bashrc
 alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"
@@ -21,6 +13,7 @@ alias gits="git status --short"
 
 # I3
 alias i3config="vi ~/.config/i3/config"
+alias i3logout="i3-msg exit"
 
 # Navigation
 alias ll="ls -lrt"
@@ -28,12 +21,10 @@ alias lart="ls -lart"
 alias c="clear"
 
 # Programs
-alias eclipse="eclipse &"
 alias grep="grep --color"
 alias go="gnome-open"
 alias psg="ps -ef | grep"
 alias term="gnome-terminal &"
-alias firefox="firefox &"
 
 # Scratch
 alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.bash"
@@ -55,5 +46,15 @@ alias vol="amixer set Master $1"
 
 # Wifi
 alias listwifi="nmcli -f ssid,signal device wifi list | tr -s \" \""
-alias wifinopass="~/.userscripts/NoPassWifiFetch.bash"
-alias wifipass="~/.userscripts/WifiFetch.bash $1"
+alias wifissidpass="nmcli device wifi connect $1 password $2"
+alias wifissidnopass="nmcli device wifi connect $1"
+alias wifiautonopass="~/.userscripts/NoPassWifiFetch.bash"
+alias wifiautopass="~/.userscripts/WifiFetch.bash $1"
+
+# Backlight
+# clone, make, and make install from the following repository
+# https://github.com/haikarainen/light.git
+# light -A 10 // increase backlight by 10
+# light -U 10 // decrease backlight by 10
+alias lightup="light -A $1"
+alias lightdown="light -U $1"
