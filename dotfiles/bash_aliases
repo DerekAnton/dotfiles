@@ -32,6 +32,9 @@ alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.bash"
 # Todo
 alias todo="vi ~/.todo"
 
+# Andoird Dev
+alias androiddev="~/DevEnvs/android-studio/bin/studio.sh"
+
 # Vim
 alias vimrc="vi ~/.vimrc"
 
