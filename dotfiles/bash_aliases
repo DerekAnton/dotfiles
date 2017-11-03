@@ -10,6 +10,7 @@ alias ff="find . -name $1"
 
 # Git
 alias gits="git status --short"
+alias ggrep="git grep"
 
 # I3
 alias i3config="vi ~/.config/i3/config"
@@ -19,6 +20,7 @@ alias i3logout="i3-msg exit"
 alias ll="ls -lrt"
 alias lart="ls -lart"
 alias c="clear"
+alias cll="c && ll"
 
 # Programs
 alias grep="grep --color"
