@@ -1,4 +1,6 @@
+export DISPLAY=:0
 export devhome=$HOME/git/
+
 alias dh="cd $devhome && pwd"
 
 # Bashrc
@@ -6,7 +8,7 @@ alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"
 
 # Find
-alias ff="find . -name $1"
+alias ff="find . -iname "
 
 # Git
 alias gits="git status --short"
@@ -17,7 +19,7 @@ alias i3config="vi ~/.config/i3/config"
 alias i3logout="i3-msg exit"
 
 # Navigation
-alias ll="ls -lrt"
+alias ll="ls -lrtp"
 alias lart="ls -lart"
 alias c="clear"
 alias cll="c && ll"
@@ -55,6 +57,10 @@ alias wifissidpass="nmcli device wifi connect $1 password $2"
 alias wifissidnopass="nmcli device wifi connect $1"
 alias wifiautonopass="~/.userscripts/NoPassWifiFetch.bash"
 alias wifiautopass="~/.userscripts/WifiFetch.bash $1"
+
+# Encrypt/Decrypt files
+function encrypt { openssl enc -aes-256-cbc -salt -in $1 -out ~/encrypted ; }
+function decrypt { openssl enc -aes-256-cbc -d -in $1 -out ~/unencrypted ; }
 
 # Backlight
 # clone, make, and make install from the following repository

@@ -46,6 +46,9 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 " F9 now toggles line numbers
 nnoremap <silent> <F9> :set number!<CR>
 
+" F10 sets scroll to 4
+nnoremap <silent> <F10> :set scroll=4<CR>
+
 " Colorscheme
 colorscheme peachpuff
 
