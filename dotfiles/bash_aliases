@@ -12,7 +12,7 @@ alias ff="find . -iname "
 
 # Git
 alias gits="git status --short"
-alias ggrep="git grep"
+alias ggrep="git grep -i"
 
 # I3
 alias i3config="vi ~/.config/i3/config"
