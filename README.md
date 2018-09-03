@@ -1,4 +1,4 @@
-# Bash_Scripts
+# dotfiles
 
 My collection of dotfiles and userscripts.
 
