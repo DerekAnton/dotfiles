@@ -57,3 +57,13 @@ highlight Pmenu ctermbg=238
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+"======================================================
+" Vim notes
+"======================================================
+" Example of incrementing values with find and replace
+":let i=1 | g/POS=Z/s//\='POS='.i/ | let i=i+1
+
+" Example of pasting n times
+" 130p
+
