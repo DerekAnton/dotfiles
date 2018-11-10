@@ -59,8 +59,8 @@ alias wifiautonopass="~/.userscripts/NoPassWifiFetch.bash"
 alias wifiautopass="~/.userscripts/WifiFetch.bash $1"
 
 # Encrypt/Decrypt files
-function encrypt { openssl enc -aes-256-cbc -salt -in $1 -out ~/encrypted ; }
-function decrypt { openssl enc -aes-256-cbc -d -in $1 -out ~/unencrypted ; }
+function encrypt { openssl enc -aes-256-cbc -salt -in $1 -out $(pwd)/encrypted ; }
+function decrypt { openssl enc -aes-256-cbc -d -in $1 -out $(pwd)/decrypted ; }
 
 # Backlight
 # clone, make, and make install from the following repository
