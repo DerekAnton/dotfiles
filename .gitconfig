@@ -1,0 +1,14 @@
+[user]
+	name = Derek Anton
+	username = DerekAnton
+    email = danton5276@gmail.com
+[core]
+    editor = vim
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[merge]
+    tool = meld
+[mergetool]
+    prompt = false

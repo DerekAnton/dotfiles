@@ -7,6 +7,9 @@ alias dh="cd $devhome && pwd"
 alias reload="source ~/.bashrc"
 alias bashrc="vi ~/.bash_aliases && reload"
 
+# Notes
+alias notes="vi ~/.notes"
+
 # Find
 alias ff="find . -iname "
 
