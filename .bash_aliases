@@ -11,7 +11,7 @@ alias bashrc="vi ~/.bash_aliases && reload"
 alias notes="vi ~/.notes"
 
 # Find
-alias ff="find . -iname "
+alias ff="find . -iname"
 
 # Git
 alias gits="git status --short"
