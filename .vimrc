@@ -64,8 +64,10 @@ nnoremap <silent> <F10> :set scroll=4<CR>
 command! -nargs=1 Tg execute 'tabe | silent grep! -IiR <args> .' | copen 15
 command! -nargs=1 G execute 'silent grep! -IiR <args> .' | copen 15
 
-command! -nargs=1 Find execute 'cgetexpr system("find . -iname '.expand('%').'")' | copen 15
-
+" Finds all files in the current directory and populates the quickfix window.
+" annoyingly adds "||" to every line, so you must use the <ctrl-w gf> to open the file
+" TODO: remove the "||" so the quickfix menu will allow me to jump to files
+command! -nargs=1 Find execute 'cgetexpr system("find . -iname <args>")' | copen 15
 
 "======================================================
 " AutoCmds
