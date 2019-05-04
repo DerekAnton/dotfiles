@@ -15,6 +15,7 @@ alias ff="find . -iname"
 
 # Git
 alias gits="git status --short"
+alias gp="git pull"
 alias ggrep="git grep -i"
 
 # I3
