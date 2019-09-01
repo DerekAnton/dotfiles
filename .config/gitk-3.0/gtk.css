@@ -1,0 +1,21 @@
+/* gnome-terminal */
+@define-color terminal_bg #300a24;
+@define-color bg_color_active_tab #4d4d4d;
+
+
+notebook.terminal-notebook header.top tab,
+notebook.terminal-notebook header.top tab:hover {
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                    from (shade (@fg_color, 0.92)),
+                                    color-stop (0.60, shade (@fg_color, 0.9)),
+                                    to (shade (@fg_color, 0.85)));
+    color: @bg_color;
+}
+
+notebook.terminal-notebook header.top tab:checked {
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                    from (shade (@bg_color_active_tab, 1.2)),
+                    to (shade (@bg_color_active_tab, 1.12)));
+    color: @bg_color;
+
+}

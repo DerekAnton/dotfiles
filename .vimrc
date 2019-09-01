@@ -15,13 +15,15 @@ set mouse=nvi                   " Mouse integration
 set ignorecase                  " Case insensitive
 set smartcase                   " Breaks case insensitivity if capital character is supplied
 set scroll=4                    " Set scroll (C-u / C-d) to be 4 lines
+set hlsearch                    " Highlights all words that match search term
 
 " Change tabs to spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-colorscheme Tomorrow-Night-Eighties
+" Old colorschemes: Tomorrow-Night-Eighties codedark
+colorscheme Atelier_HeathDark
 
 "======================================================
 " Remaps
