@@ -15,15 +15,15 @@ set mouse=nvi                   " Mouse integration
 set ignorecase                  " Case insensitive
 set smartcase                   " Breaks case insensitivity if capital character is supplied
 set scroll=4                    " Set scroll (C-u / C-d) to be 4 lines
-set hlsearch                    " Highlights all words that match search term
+set hlsearch                    " Highlights all instances of serached term
 
 " Change tabs to spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Old colorschemes: Tomorrow-Night-Eighties codedark
-colorscheme Atelier_HeathDark
+" Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark
+colorscheme codedark
 
 "======================================================
 " Remaps
@@ -56,6 +56,14 @@ nnoremap <silent> <F9> :set number!<CR>
 
 " F10 sets scroll to 4
 nnoremap <silent> <F10> :set scroll=4<CR>
+
+
+"======================================================
+" Netrw
+"======================================================
+let g:netrw_banner = 0         " Remove banner
+let g:netrw_browse_split = 1   " Always virtical split
+let g:netrw_liststyle = 3      " Always a tree structure
 
 "======================================================
 " Commands

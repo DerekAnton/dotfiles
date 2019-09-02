@@ -2,6 +2,7 @@ export DISPLAY=:0
 export devhome=$HOME/git/
 
 alias dh="cd $devhome && pwd"
+alias clones="cd ~/git/.clones"
 
 # Bashrc
 alias reload="source ~/.bashrc"
@@ -23,7 +24,7 @@ alias i3config="vi ~/.config/i3/config"
 alias i3logout="i3-msg exit"
 
 # Navigation
-alias ll="ls -lrtp"
+alias ll="ls -Flrtp"
 alias lart="ls -lart"
 alias c="clear"
 alias cll="c && ll"

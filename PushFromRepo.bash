@@ -16,4 +16,4 @@ cp ~/git/dotfiles/userscripts/NoPassWifiFetch.bash ~/.userscripts/NoPassWifiFetc
 cp ~/git/dotfiles/userscripts/WifiFetch.bash ~/.userscripts/WifiFetch.bash
 
 # Configs
-cp .config/gitk-3.0/ ~/.config/gtk-3.0/gtk.css
+cp .config/gitk-3.0/* ~/.config/gtk-3.0/gtk.css
