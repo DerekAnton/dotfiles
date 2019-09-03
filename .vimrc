@@ -22,8 +22,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark
-colorscheme codedark
+" Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark codedark
+colorscheme Tomorrow-Night-Eighties
 
 "======================================================
 " Remaps
