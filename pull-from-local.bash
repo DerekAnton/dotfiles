@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Dotfiles
-cp ~/.bash_aliases .
-cp ~/.bashrc .
-cp ~/.vimrc .
-cp ~/.notes .
-cp ~/.gitconfig .
-cp ~/scratch/.template .
+REPO=~/git/dotfiles/
+
+cp ~/.bashrc $REPO && \
+cp ~/.bash_aliases $REPO && \
+cp ~/.bash_functions $REPO && \
+cp ~/.vimrc $REPO && \
+cp ~/.gitconfig $REPO && \
+cp ~/.notes $REPO && \
+cp -r ~/.config/user-dirs.dirs $REPO/.config/
 
 # Userscripts
 cp ~/.userscripts/CreateUniqueScratchCpp.bash ~/git/dotfiles/userscripts/CreateUniqueScratchCpp.bash

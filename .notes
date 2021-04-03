@@ -1,12 +1,108 @@
-======================
-========Notes=========
-======================
+==================================================================================================================================================================================================================
+Bash
+==================================================================================================================================================================================================================
 
-======================================================
- Vim notes
-======================================================
- Example of incrementing values with find and replace
-:let i=1 | g/POS=Z/s//\='POS='.i/ | let i=i+1
+quick looping examples:
+    for i in {1..20}; do echo $i; done;
+        also works in reverse order
+        for i in {20..1}; do echo $i; done;
+    for FILE in $(find -iname *.orig* | xargs); do gitk $FILE; done;
 
- Example of pasting n times
- 130p
+3 ways to run commands through xargs:
+    <command> | xargs <command>
+    <command> | xargs -I{} <command> {}
+    <command> | xargs -I{} bash -c '<command> {}; <command>; <command>'
+
+
+use bc to convert from decimal -> octal -> binary
+    example:  echo "obase=8;ibase=10;x" | bc
+
+finding sizes of directories with du
+  du --max-depth=1 -h | sort -h
+
+==================================================================================================================================================================================================================
+Vim
+==================================================================================================================================================================================================================
+
+vim find and delete lines that match a pattern
+    :g(lobal)/pattern_to_match/d(elete)
+        Example: :g/^GPS0.-L.-Y.*/d
+
+quick compare two files (without vimdiff)
+    vim -O (opens files in vertical splits) -o (opens files in horizontal splits) <files>
+        :set scrollbind    (binds the two files to scroll in tandem)
+
+==================================================================================================================================================================================================================
+Vimdiff
+==================================================================================================================================================================================================================
+
+]c advance to the next block with differences
+[c reverse search to the previous block with differences
+dp (diff put)    copy changes from current file to other file
+:diffupdate re-scan the files for changes
+:'<,'>diffput copy selected changes from current file to other file
+
+==================================================================================================================================================================================================================
+Gdb
+==================================================================================================================================================================================================================
+
+gdb -tui <ExecuteableName> core.file
+- or -
+gdb -tui --args ./UnitTest --run_test=testsuite/testname
+
+break filename.extension:linenumber
+clear (clears all breakpoints in current file)
+r[un]
+c[ontinue]
+s[tep] (into)
+n[ext] (step over)
+
+ctrl+p (previous command)
+ctrl+n (next command)
+
+ctrl-c info threads (lists all current threads)
+    t X (where X is the thread number) to switch threads
+    press up until you are at familiar code. (consider skipping any cuda, logger, or socket threads)
+
+==================================================================================================================================================================================================================
+Git
+==============================================================================================================================================================================================================
+
+How to fixup commits:
+current state - you have two local commits, and you realized you want to remove a line from something (or add one)
+    1) make your changes and add them
+    2) git commit --fixup <commit id you want to apply it to>
+    3) get the commit id for the commit BEFORE the one you want to apply your fixup to
+    4) git rebase -i --autosquash <the commit from step 3>
+    5) :wq the commit message
+done
+
+==================================================================================================================================================================================================================
+Netrw
+==============================================================================================================================================================================================================
+
+When using netrw (the vim file explorer) you can cursor over a file
+and hit (o, v, t to open the file in current buffer, virt split, or
+tab) or create a new diretory (d) or new file (%)
+
+==================================================================================================================================================================================================================
+Screen sharing
+==============================================================================================================================================================================================================
+
+vncpasswd
+1.) select private password
+2.) select public password
+x0vncserver -PasswordFile=$HOME/.vnc/passwd -AlwaysShared=1
+x0vncserver -PasswordFile=$HOME/.vnc/passwd -AlwaysShared=1 -Geometry=1680x1050 (because my monitors are bad)
+
+============================
+Initalize bare repos
+============================
+
+mkdir Name_Of_Repo
+git init --bare
+
+git clone <username>@<server>:/path/to/repo/
+# it will fail, but continue
+# git add / git commit a file for the initial comit
+push origin master

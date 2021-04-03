@@ -1,14 +1,33 @@
 [user]
 	name = Derek Anton
 	username = DerekAnton
-    email = danton5276@gmail.com
-[core]
-    editor = vim
+        email = danton5276@gmail.com
+[alias]
+    sb = status -sb
+    last = "!git log --oneline --decorate -n `if [ $# -eq 0 ]; then echo 1; fi`"
+    ls = log --all --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short
+    meldstash = "! function f() { git stash show --name-only $* | xargs -I{} git difftool HEAD..$* '{}'; }; f"
+    showstash = "! function f() { git stash show --name-only $* | xargs -I{} git difftool $*~1..$* '{}'; }; f"
+    stamp = "! function f() { git ls-files | xargs ls -al --time-style=\"+%Y-%m-%d %H:%M:%S\" | cut -c 42- | sed \"s/\\(.*\\) \\(.*\\)/'\\1' \\2/\" > .git_stamp; }; f"
+    restore = "! function f() { xargs -I{} -d '\n' -a .git_stamp sh -c \"touch -d {}\"; }; f"
+[difftool]
+    tool = meld
+    prompt = false
 [diff]
     tool = meld
-[difftool]
     prompt = false
 [merge]
-    tool = meld
-[mergetool]
+	tool = meld
     prompt = false
+[mergetool]
+	tool = meld
+    prompt = false
+[core]
+    editor = vim
+[push]
+	default = simple
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

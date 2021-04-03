@@ -1,0 +1,35 @@
+style "meld-color-scheme-user"
+{
+    color["insert-bg"] = "#722534" # Magenta
+    color["insert-outline"] = shade(1.8, @insert-bg)
+    color["insert-text"] = "white"
+
+    #color["inline-bg"] = "#FF6666" # Pink
+    #color["inline-bg"] = "#A45133" # Dark Orange
+    color["inline-bg"] = "#722534" # Magenta
+    color["inline-fg"] = "white"
+
+    color["current-chunk-highlight"] = "#02869A" # Teal
+    color["current-chunk-outline"] = shade(1.8, @current-chunk-highlight)
+
+    color["delete-bg"] = "#800000" # Red
+    color["delete-outline"] = shade(1.8, @delete-bg)
+    color["delete-text"] = "white"
+
+    color["replace-bg"] = "#25507C" # Blue
+    color["replace-outline"] = shade(1.8, @replace-bg)
+    color["replace-text"] = "red"
+
+    color["conflict-bg"] = "#9F1849" # Magenta
+    color["conflict-outline"] = shade(1.8, @conflict-bg)
+    color["conflict-text"] = "red"
+
+    color["error-bg"] = "#9F1849" # Light Magenta
+    color["error-outline"] = shade(1.8, @error-bg)
+    color["error-text"] = "red"
+
+    color["unknown-text"] = "#E0E0E0"
+
+    color["syncpoint-outline"] = "Yellow"
+}
+widget "meldapp.*" style : highest "meld-color-scheme-user"

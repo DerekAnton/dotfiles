@@ -1,57 +1,68 @@
 export DISPLAY=:0
 export devhome=$HOME/git/
+umask 022
 
-alias dh="cd $devhome && pwd"
-alias clones="cd ~/git/.clones"
-
-# Bashrc
+# RCs
 alias reload="source ~/.bashrc"
-alias bashrc="vi ~/.bash_aliases && reload"
+alias bashrc="vim -p ~/.bash_aliases ~/.bash_functions && reload"
+alias vimrc="vim ~/.vimrc"
 
-# Notes
-alias notes="vi ~/.notes"
+# Navigation
+alias dh="cd $devhome && pwd"
+alias ll="ls -Flrt"
+alias c="clear"
+alias cll="c; ll"
 
-# Find
-alias ff="find . -iname"
+# SSH
+alias knownhosts="vim ~/.ssh/known_hosts"
+alias ssh="ssh -qY -o ServerAliveInterval=5"
 
 # Git
 alias gits="git status --short"
+alias cgits="c && gits"
+alias ggrep="c && git grep -i"
 alias gp="git pull"
-alias ggrep="git grep -i"
+alias difftool="git difftool"
+alias cached="git difftool --cached"
 
-# I3
-alias i3config="vi ~/.config/i3/config"
-alias i3logout="i3-msg exit"
+# Repos
+alias gh="cd ~/git/ && pwd"
+alias rxcert="cd ~/git/RxCert && pwd"
+alias rx="rxcert"
+alias ni="cd ~/git/NetworkInstall"
+alias dotfiles="cd ~/git/dotfiles && pwd"
+alias tools="cd ~/tools"
+alias packupRTSTF="~/git/RTSTF/Scripts/Environments/packupRTSTF.bash -t /ap.org/storage/transfers/exports -u $(whoami)"
 
-# Navigation
-alias ll="ls -Flrtp"
-alias lart="ls -lart"
-alias c="clear"
-alias cll="c && ll"
+# Misc
+alias grep="grep -iI --color"
+alias killjobs='kill $(jobs -p)'
+alias who="w"
+alias more="less"
 
-# Programs
-alias grep="grep --color"
+# Gnome
 alias go="gnome-open"
-alias psg="ps -ef | grep"
-alias term="gnome-terminal &"
+alias logout="gnome-session-quit --logout"
+alias here="nautilus . &"
 
-# Scratch
-alias scratch="cd ~/scratch && ~/.userscripts/CreateUniqueScratchCpp.bash"
 
-# Todo
-alias todo="vi ~/.todo"
+alias scratch="cd ~/tools/scratch && vim main.cpp"
 
-# Andoird Dev
-alias androiddev="~/DevEnvs/android-studio/bin/studio.sh"
-
-# Vim
-alias vimrc="vi ~/.vimrc"
+# Notes
+alias notes="vim ~/.notes"
 
 # Vim Dev
 function flist  { find ~/git/RTSTF -iname '*.cpp' -o -iname '*.cc' -o -iname '*.c' -o -iname '*.hpp' -o -iname '*.hh' -o -iname '*.h' ; }
 function mlist  { find ~/git/RTSTF -iname 'makefile' ; }
 function mktags { 'cd ~/git/ && flist > cscope.files && ctags -L cscope.files && cscope -bqv' ; }
 alias vv='(mktags && cd ~/git/ &&  vim)'
+
+# Vim Dev
+#alias vim-help="vim -c Explore /usr/share/vim/vim74/doc"
+#alias vim-explore="vim -c Explore "
+#alias mklocaltags="flist > cscope.files && ctags -L cscope.files && cscope -bqv"
+#alias vv='cd ~/git/RTSTF && mktags && flist > cscope.files && ctags -L cscope.files && cscope -bqv && vim'
+#alias emacs="date ; echo 'Wait... you meant to type vim, didnt you? Of course you did. Let me help you with that.' ; sleep 3 ; import -window root ~/screen_$(date).png ; vim"
 
 # Volume
 alias vol="amixer set Master $1"
@@ -74,3 +85,6 @@ function decrypt { openssl enc -aes-256-cbc -d -in $1 -out $(pwd)/decrypted ; }
 # light -U 10 // decrease backlight by 10
 alias lightup="light -A $1"
 alias lightdown="light -U $1"
+
+# Core Files
+#ulimit -c unlimited
