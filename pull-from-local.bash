@@ -2,12 +2,13 @@
 
 REPO=~/git/dotfiles/
 
-cp ~/.bashrc $REPO && \
-cp ~/.bash_aliases $REPO && \
-cp ~/.bash_functions $REPO && \
-cp ~/.vimrc $REPO && \
-cp ~/.gitconfig $REPO && \
-cp ~/.notes $REPO && \
+cp ~/.bashrc $REPO ; \
+cp ~/.bash_aliases $REPO ; \
+cp ~/.bash_functions $REPO ; \
+cp ~/.vimrc $REPO ; \
+cp ~/.gitconfig $REPO ; \
+cp ~/.notes $REPO ; \
+cp ~/.tmux.conf $REPO ; \
 cp -r ~/.config/user-dirs.dirs $REPO/.config/
 
 # Userscripts

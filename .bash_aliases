@@ -2,6 +2,9 @@ export DISPLAY=:0
 export devhome=$HOME/git/
 umask 022
 
+# Load tmux if it is available and is not already running
+if [[ -f /usr/bin/tmux ]] && [[ ! $TMUX ]]; then tmux; fi;
+
 # RCs
 alias reload="source ~/.bashrc"
 alias bashrc="vim -p ~/.bash_aliases ~/.bash_functions && reload"
@@ -41,7 +44,8 @@ alias who="w"
 alias more="less"
 
 # Gnome
-alias go="gnome-open"
+#alias go="gnome-open"
+alias go="xdg-open"
 alias logout="gnome-session-quit --logout"
 alias here="nautilus . &"
 
@@ -66,6 +70,7 @@ alias vv='(mktags && cd ~/git/ &&  vim)'
 
 # Volume
 alias vol="amixer set Master $1"
+alias volume="pauvcontrol"
 
 # Wifi
 alias listwifi="nmcli -f ssid,signal device wifi list | tr -s \" \""
