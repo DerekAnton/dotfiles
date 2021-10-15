@@ -19,6 +19,7 @@ set tabstop=4                   " Controls the number of spaces that will be ins
 set shiftwidth=4                " Automatic indentation width
 set expandtab                   " Changes all tab characters to spaces
 set vb                          " Disable error bells
+set t_vb=                       " Disable visual bell
 set ttyfast                     " Faster screen redraw
 set splitbelow                  " Split below rather than above
 set splitright                  " Split right rather than left
@@ -28,7 +29,8 @@ set noswapfile                  " No swap files when opening files (warning: wil
 " =========================== Custom hotkeys ===========================
 
 " Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark
-colorscheme Tomorrow-Night-Eighties
+" colorscheme Tomorrow-Night-Eighties
+colorscheme desert
 
 " Enter key turns off search highlighting
 nnoremap <silent> <CR> :noh<CR><CR>

@@ -2,6 +2,7 @@
 	name = Derek Anton
 	username = DerekAnton
         email = danton5276@gmail.com
+
 [alias]
     sb = status -sb
     last = "!git log --oneline --decorate -n `if [ $# -eq 0 ]; then echo 1; fi`"
