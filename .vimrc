@@ -26,11 +26,11 @@ set splitright                  " Split right rather than left
 set noswapfile                  " No swap files when opening files (warning: will lose unsaved changes if vim crashes with this)
 "set tabline=%t                 " TODO make a nice custom tabline
 "colorscheme default             " Default vim colors
+
 " =========================== Custom hotkeys ===========================
 
 " Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark
-" colorscheme Tomorrow-Night-Eighties
-colorscheme desert
+colorscheme elflord
 
 " Enter key turns off search highlighting
 nnoremap <silent> <CR> :noh<CR><CR>
@@ -125,7 +125,7 @@ let @l = 'oLOG(mLogger.info, "");'
 hi Search ctermfg=White ctermbg=DarkGreen
 hi Visual ctermfg=White ctermbg=DarkBlue
 hi TabLineFill ctermfg=DarkGray
-hi TabLine ctermfg=Black ctermbg=DarkGray
+hi TabLine ctermfg=Gray ctermbg=DarkGray
 hi TabLineSel ctermfg=Gray
 
 " Vimdiff custom colors
@@ -135,6 +135,14 @@ if &diff
     highlight DiffDelete ctermbg=Red       ctermfg=White cterm=NONE
     highlight DiffChange ctermbg=DarkBlue  ctermfg=White cterm=NONE
     highlight DiffText   ctermbg=DarkGreen  ctermfg=White cterm=Underline
+endif
+
+" =========================== Tmux compatability  =============================
+if &term =~ '^screen'
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
 endif
 
 " =========================== Netrw settings  =============================
