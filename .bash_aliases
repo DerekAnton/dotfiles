@@ -2,9 +2,6 @@ export DISPLAY=:0
 export devhome=$HOME/git/
 umask 022
 
-# Load tmux if it is available and is not already running
-if [[ -f /usr/bin/tmux ]] && [[ ! $TMUX ]]; then tmux; fi;
-
 # RCs
 alias reload="source ~/.bashrc"
 alias bashrc="vim -p ~/.bash_aliases ~/.bash_functions && reload"
@@ -56,6 +53,7 @@ alias scratch="cd ~/tools/scratch && vim main.cpp"
 alias notes="vim ~/.notes"
 
 # Vim Dev
+alias vim="vim -p"
 function flist  { find ~/git/RTSTF -iname '*.cpp' -o -iname '*.cc' -o -iname '*.c' -o -iname '*.hpp' -o -iname '*.hh' -o -iname '*.h' ; }
 function mlist  { find ~/git/RTSTF -iname 'makefile' ; }
 function mktags { 'cd ~/git/ && flist > cscope.files && ctags -L cscope.files && cscope -bqv' ; }

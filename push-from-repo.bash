@@ -7,4 +7,5 @@ cp -f .vimrc ~/ ; \
 cp -f .gitconfig ~/ ; \
 cp -f .notes ~/ ; \
 cp -f .tmux.conf ~/ ; \
+cp -rf .vim/ ~/ ; \
 cp -f .gtkrc-2.0 ~/

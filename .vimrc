@@ -25,12 +25,9 @@ set splitbelow                  " Split below rather than above
 set splitright                  " Split right rather than left
 set noswapfile                  " No swap files when opening files (warning: will lose unsaved changes if vim crashes with this)
 "set tabline=%t                 " TODO make a nice custom tabline
-"colorscheme default             " Default vim colors
+colorscheme halfdark
 
 " =========================== Custom hotkeys ===========================
-
-" Old colorschemes: Tomorrow-Night-Eighties Atelier_HeathDark
-colorscheme elflord
 
 " Enter key turns off search highlighting
 nnoremap <silent> <CR> :noh<CR><CR>

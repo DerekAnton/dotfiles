@@ -10,6 +10,7 @@ cp ~/.gitconfig $REPO ; \
 cp ~/.notes $REPO ; \
 cp ~/.tmux.conf $REPO ; \
 cp -r ~/.config/user-dirs.dirs $REPO/.config/
+cp -r ~/.vim/colors/* .vim/colors/
 
 # Userscripts
 cp ~/.userscripts/CreateUniqueScratchCpp.bash ~/git/dotfiles/userscripts/CreateUniqueScratchCpp.bash
