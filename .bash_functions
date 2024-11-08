@@ -8,7 +8,7 @@ function ff() { find . -type f -iname "$1"; }
 function fd() { find . -type d -iname "$1"; }
 
 # Change directory to a given users area
-function theirs()   { cd /home/OLYMPUS/"$1"/git/RTSTF/ && pwd; }
+function theirs()   { cd /home/"$1"/git/RTSTF/ && pwd; }
 
 # Assumes you are in ~user/git/RTSTF/ and takes filename path(s) to meld against in your area
 function meldmine() { if [[ $# < 1 ]]; then echo "Usage: <Files to compare> (Assumes you are in ~user/git/RTSTF/)"; else for FILE in "$@"; do meld "$FILE" "$HOME/git/RTSTF/$FILE"; done; fi; }
@@ -47,7 +47,9 @@ function open-named() { vim -p $(find . -iname "$1"); }
 function remove-origs() { FILES=$(find . -iname *.orig | xargs);  if [[ $FILES == "" ]]; then echo "no files to remove"; else rm $FILES; echo "removed all orig files successfully"; fi; }
 
 # Removes all untracked files from a git repo
-function remove-untracked() { rm -f $(gits | sed 's/?? //g' | xargs); }
+function remove-untracked() { rm -f $(gits | grep "?" | sed 's/?? //g' | xargs); }
+
+function clear-logsoutput() { rm -rf ~/RTSTF_master/{output,logs}/*; }
 
 # Prints the current scenario a provided user's RTSTF_master is configured for (blank denotes your user)
 function scenario()
@@ -56,7 +58,7 @@ function scenario()
     elif [[ $# == 1 ]]; then USER=$(echo $HOME | sed s/"$(whoami)"/$1/g);
     else echo "Usage: <Username (optional)>"; return; fi
 
-    ls -l "${USER}/RTSTF_master/config" | xargs | cut -d " " -f 12 | cut -d "/" -f 7;
+    ls -l "${USER}/RTSTF_master/config" | xargs | cut -d " " -f 11  | sed 's/^\/.*Scenarios\///g' | sed 's/\/.*//g'
 }
 
 # Determines which boost test suites to run based on the changes you have in your area
@@ -122,10 +124,25 @@ function flist()  { find . -iname '*.cpp' -o -iname '*.cc' -o -iname '*.c' -o -i
 function mlist()  { find . -iname 'makefile'; }
 
 # Builds CTags for vim development
-function mktags() { ssh -oLogLevel=error zeus 'cd ~/git/RTSTF && flist > cscope.files && ctags -L cscope.files && cscope -bqv'; }
+function mktags() { cd ~/git/RTSTF && flist > cscope.files && ctags -L cscope.files && cscope -bqv; }
 
 # Melds against current HEAD against a provided stash (i.e. stash@{0})
 function meld-stash() { git stash show --name-only $* | xargs -I{} git difftool HEAD..$* '{}'; }
 
-# Creates a git bundle; assumes you are in a git repository where HEAD is the commit you want to bundle to. Takes 1.) Filename of output bundle 2.) SHA ID of oldest commit to start from
-function create-bundle() { git bundle create "$1" "$2" --tags --branches; }
+# Creates a git bundle; assumes you are in a git repository where HEAD is the commit you want to bundle to. Takes 1.) Filename of output bundle 2.) SHA ID of oldest commit to start from (exclusive)
+function create-bundle() { if [[ $# < 2 ]]; then echo "Usage: 1.) Filename of output bundle 2.) SHA ID of oldest commit to start from"; else git bundle create "$1" "$2"..HEAD --tags --branches; fi; }
+
+# Encrypt AES256
+function encrypt() { openssl enc -aes-256-cbc -salt -in $1 -out $(pwd)/encrypted; }
+
+# Decrypt AES256
+function decrypt { openssl enc -aes-256-cbc -d -in $1 -out decrypted.out; }
+
+# Pull from the many pnt repos
+function pull-pnt() { for REPO in ~/git/pnt/*/; do basename $REPO; git -C $REPO pull; done; }
+
+# Takes in the executable to extract a core file from RHEL core repository
+get-core-for() { EXECUTABLE=$1; cd ~/RTSTF_master/bin/; sudo coredumpctl -o ~/corefile.dump dump ${EXECUTABLE}; gdb -tui ~/RTSTF_master/bin/${EXECUTABLE} ~/corefile.dump; rm -f ~/corefile.dump; }
+
+# Run make test on a given directory (recursive find all test suites)
+make-test-dir() { if [[ $# != 1 ]]; then echo "Usage: <path to directory you want to run RTSTF tests>"; else cd ~/git/RTSTF; make test TEST=$(grep -R 'BOOST_AUTO_TEST_SUITE(' $1 | sed 's/.*BOOST_AUTO_TEST_SUITE(\(.*\))/\1/g' | xargs | tr -s ' ' ','); fi; }

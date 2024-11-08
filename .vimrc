@@ -1,6 +1,6 @@
 syntax enable
 
-" =========================== Presets ===========================
+" =========================== Pre-Sets ===========================
 
 set autoindent                  " Auto indentation of new lines
 set number                      " Line numbers enabled
@@ -19,13 +19,16 @@ set tabstop=4                   " Controls the number of spaces that will be ins
 set shiftwidth=4                " Automatic indentation width
 set expandtab                   " Changes all tab characters to spaces
 set vb                          " Disable error bells
-set t_vb=                       " Disable visual bell
 set ttyfast                     " Faster screen redraw
 set splitbelow                  " Split below rather than above
 set splitright                  " Split right rather than left
-set noswapfile                  " No swap files when opening files (warning: will lose unsaved changes if vim crashes with this)
-"set tabline=%t                 " TODO make a nice custom tabline
-colorscheme halfdark
+set noswapfile                  " No swap files created when opening files (warning: will lose unsaved changes if vim crashes with this)
+set hlsearch                    " Always highlight all search results
+set t_vb=                       " Disable annoying visual terminal bell (screen flashing)
+set laststatus=2                " Show statusline (bottom bar)
+set statusline+=%F              " Add persistent full filepath to statusline
+
+colorscheme halfdark          " Custom colorscheme loaded from ~/.vim/colors/
 
 " =========================== Custom hotkeys ===========================
 
@@ -38,10 +41,10 @@ nnoremap K kJ
 " Toggle line numbers
 nnoremap <silent> <F9> :set number!<CR>
 
-" Set scroll =4 (equivilant to one mouse wheel scroll)
+" Set scroll to 4 (equivilant to one mouse wheel scroll)
 nnoremap <silent> <F10> :set scroll=4<CR>
 
-" F11 reserved OS hotkey (full screen)
+" F11 reserved gnome hotkey (full screen)
 
 " Toggles between folding
 nnoremap <silent> <F12> :set foldmethod=syntax<Bar>echo "NOTE: zr unfold, zR unfold all, zm fold, zM fold all"<CR>
@@ -61,8 +64,14 @@ map = <C-w>=
 " Makes jumping between split windows to be more like navigating through tabs
 map gs <C-w>w
 
-" Makes goto file under cursor open the file in a new tab rather than the current buffer
+" Makes open file under cursor open the file in a new tab rather than the current buffer
 map gf <C-w>gf
+
+" Makes goto file under cursor open the file in a new split rather than the current buffer
+nnoremap gos <C-w>vgf
+
+" goto file under cursor, assumes you want to close the quickfix window on selection
+map GF <C-w>gfgT:q<CR>gt
 
 " =========================== Custom Commands ============================
 
@@ -103,6 +112,8 @@ command -nargs=1 Meldtheirs execute system("source ~/.bashrc && meldtheirs " . "
 " Assumes you are editing someone else's ~user/git/RTSTF/ file and melds it against your version
 command -nargs=0 Meldmine execute system("source ~/.bashrc && meldmine " . @%)
 
+command -nargs=0 DH execute 'cd ~/git/RTSTF'
+
 " =========================== Autocmds ============================
 
 " automatically open the file explorer
@@ -117,31 +128,6 @@ let @a = 'ostd::cout << " [" <<   << "]" << std::endl;'
 let @c = 'ostd::cout << << std::endl;'
 let @l = 'oLOG(mLogger.info, "");'
 
-" =========================== Custom Colors ===========================
-
-hi Search ctermfg=White ctermbg=DarkGreen
-hi Visual ctermfg=White ctermbg=DarkBlue
-hi TabLineFill ctermfg=DarkGray
-hi TabLine ctermfg=Gray ctermbg=DarkGray
-hi TabLineSel ctermfg=Gray
-
-" Vimdiff custom colors
-if &diff
-    highlight Visual     ctermfg=White     ctermbg=Blue
-    highlight DiffAdd    ctermbg=DarkGreen ctermfg=White cterm=NONE
-    highlight DiffDelete ctermbg=Red       ctermfg=White cterm=NONE
-    highlight DiffChange ctermbg=DarkBlue  ctermfg=White cterm=NONE
-    highlight DiffText   ctermbg=DarkGreen  ctermfg=White cterm=Underline
-endif
-
-" =========================== Tmux compatability  =============================
-if &term =~ '^screen'
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
-
 " =========================== Netrw settings  =============================
 " Note: When using netrw (the vim file explorer) you can cursor over a file
 "       and hit (o, v, t to open the file in current buffer, virt split, or
@@ -151,3 +137,43 @@ let g:netrw_banner=0    " removes the help banner
 let g:netrw_winsize=85  " sets the default size of a window opened from netrw to be (in window percent size)
 
 " ========================================================================
+
+" Turn off syntax highlight if in vimdiff mode
+if &diff
+    syntax off
+endif
+
+" Forces/enables folding for xml files
+"augroup XML
+"    autocmd!
+"    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+"augroup END
+
+" Function to force tabs to only show the filename (not abbreviated full path)
+function! Tabline() abort
+    let l:line = ''
+    let l:current = tabpagenr()
+
+    for l:i in range(1, tabpagenr('$'))
+        if l:i == l:current
+            let l:line .= '%#TabLineSel#'
+        else
+            let l:line .= '%#TabLine#'
+        endif
+
+        let l:label = fnamemodify(
+            \ bufname(tabpagebuflist(l:i)[tabpagewinnr(l:i) - 1]),
+            \ ':t'
+        \ )
+
+        let l:line .= '%' . i . 'T' " Starts mouse click target region.
+        let l:line .= '  ' . l:label . '  '
+    endfor
+
+    let l:line .= '%#TabLineFill#'
+    let l:line .= '%T' " Ends mouse click target region(s).
+
+    return l:line
+endfunction
+
+set tabline=%!Tabline()

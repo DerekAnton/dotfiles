@@ -20,6 +20,15 @@ use bc to convert from decimal -> octal -> binary
 finding sizes of directories with du
   du --max-depth=1 -h | sort -h
 
+columize comma separated output (can also be used when selected output in vim and run with !)
+column -t -s ,
+
+==================================================================================================================================================================================================================
+Passwordless SSH
+==================================================================================================================================================================================================================
+ssh-keygen # Hit enter for all prompts
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-server
+
 ==================================================================================================================================================================================================================
 Vim
 ==================================================================================================================================================================================================================
@@ -31,6 +40,20 @@ vim find and delete lines that match a pattern
 quick compare two files (without vimdiff)
     vim -O (opens files in vertical splits) -o (opens files in horizontal splits) <files>
         :set scrollbind    (binds the two files to scroll in tandem)
+
+to convert data to a column run:
+    :%!column -t -s ,
+    Where -t converts the data to a table
+    Where -s delimits the data (comma separated data converts the commas to table format)
+
+to insert an incrementing sequence:
+    insert a column of 0's
+    0 1
+    0 2
+    0 3
+    0 4
+    0 5
+    visual select them, then g CTRL-a
 
 ==================================================================================================================================================================================================================
 Vimdiff
@@ -65,6 +88,19 @@ ctrl-c info threads (lists all current threads)
     press up until you are at familiar code. (consider skipping any cuda, logger, or socket threads)
 
 ==================================================================================================================================================================================================================
+RTSTF
+==============================================================================================================================================================================================================
+
+make test TEST=StatusMessageTestSuite TEST_LOG=message
+   when used in conjunction with this c++ in a unit test, allows for seeing xml messages: BOOST_TEST_MESSAGE(aStatusMsg.toXmlString("", true));
+
+==============================================================================================================================================================================================================
+C2
+==============================================================================================================================================================================================================
+To remove line of sight checks for SVs in C2/SigGen
+GnssProfileProcessorConfig_MultiChannel.xml CheckLineOfSight
+
+==================================================================================================================================================================================================================
 Git
 ==============================================================================================================================================================================================================
 
@@ -77,6 +113,29 @@ current state - you have two local commits, and you realized you want to remove 
     5) :wq the commit message
 done
 
+How to create a git bundle:
+# Creates a bundle of the 2 most recent commits
+    git bundle create RTSTF.bundle -2 HEAD
+
+==================================================================================================================================================================================================================
+Sed
+==============================================================================================================================================================================================================
+selecting groups in sed:
+    echo "hello-1.world" | sed 's|-\([0-9]\)|:\1|g'
+non-greedy select:
+    use [^(whatever character you want to stop at)] in place of '.' in the '.*' greedy expression
+    Example: sed -i 's|NumSignals="[^"]*"|NumSignals="113"|g'
+            (Find from NumSignals=".*" (stopping at the next " character.)
+
+==================================================================================================================================================================================================================
+netcat
+==============================================================================================================================================================================================================
+Server:
+nc -l -p [port]
+
+Client:
+nc [server-ip-address] [port] <press enter> start typing to send commands
+
 ==================================================================================================================================================================================================================
 Netrw
 ==============================================================================================================================================================================================================
@@ -84,6 +143,7 @@ Netrw
 When using netrw (the vim file explorer) you can cursor over a file
 and hit (o, v, t to open the file in current buffer, virt split, or
 tab) or create a new diretory (d) or new file (%)
+move file by highlighting it with (R) and giving it a new path
 
 ==================================================================================================================================================================================================================
 Screen sharing
@@ -94,6 +154,17 @@ vncpasswd
 2.) select public password
 x0vncserver -PasswordFile=$HOME/.vnc/passwd -AlwaysShared=1
 x0vncserver -PasswordFile=$HOME/.vnc/passwd -AlwaysShared=1 -Geometry=1680x1050 (because my monitors are bad)
+
+==================================================================================================================================================================================================================
+Wodim
+==============================================================================================================================================================================================================
+# create iso
+mkisofs -o /tmp/cd.iso /tmp/directory/
+
+# burn iso
+wodim -eject -tao speed=0 dev=/dev/scd0 -v -data /my/directory/image.iso
+or
+wodim -eject -tao speed=1 dev=/dev/sr1 -v -data /home/danton/cd.iso
 
 ============================
 Initalize bare repos
@@ -106,3 +177,16 @@ git clone <username>@<server>:/path/to/repo/
 # it will fail, but continue
 # git add / git commit a file for the initial comit
 push origin master
+
+==================================================================================================================================================================================================================
+Extracting core files from coredumpctl
+==============================================================================================================================================================================================================
+by default, RHEL8 uses a centrally managed core dump daemon called coredumpctl
+NOTE: must be a privileged user to view these core files, in addition with the running user setting ulimit -c unlimited
+
+a user can view all coredumps by running the following command:
+    coredumpctl
+list cores generated by a specific executable
+    coredumpctl list Receiver
+extract the most recent core file from the coredumpctl database for a given executable
+    coredumpctl -o corefile.dump dump Receiver
